@@ -45,8 +45,8 @@ def snowman(snowman_word):
 
 
 def build_snowman_graphic(wrong_guesses_count):
-    """This function extracts a portion of the 
-    snowman depending on the number of 
+    """This function extracts a portion of the
+    snowman depending on the number of
     wrong guesses and converts it to a single string
     """
 
@@ -68,7 +68,7 @@ def get_letter_from_user(correct_letter_guess_statuses, wrong_guesses_list):
             print("You must input a letter!")
         elif len(user_input_string) > 1:
             print("You can only input one letter at a time!")
-        elif (user_input_string in correct_letter_guess_statuses 
+        elif (user_input_string in correct_letter_guess_statuses
                 and correct_letter_guess_statuses[user_input_string]):
             print("You already guessed that letter and it's in the word!")
         elif user_input_string in wrong_guesses_list:
@@ -83,6 +83,9 @@ def build_letter_status_dict(snowman_word):
     letter_status_dict = {}
     for letter in snowman_word:
         # keep track of any character a player might guess (alphabetic)
+        if not letter.isalpha():
+            continue
+
         letter_status_dict[letter] = False
 
     return letter_status_dict
